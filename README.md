@@ -24,3 +24,21 @@ by: Gunnar Pope
 
 ```
 
+## Reconsile 'Detached HEAD' git error.
+9/6/18
+
+I created this error by doing a `git checkout <previous commit>` and then made some changed to the files. Essentially, I started editing the code to an unnamed branch. What you need to do is create a branch, check it out, then point the master branch to it using `git branch -f master temp`. See [How can I reconcile detached HEAD with master/origin?](https://stackoverflow.com/questions/5772192/how-can-i-reconcile-detached-head-with-master-origin) for a great explanation.
+
+
+```
+git branch temp
+git branch
+git checkout temp 
+git diff master temp
+git branch -f master temp
+git checkout master
+git status
+git push
+
+```
+
